@@ -1,7 +1,6 @@
 // Main slider
 let slides = document.querySelectorAll(".slide");
 let index = 0;
-
 function showSlide() {
   slides.forEach((slide, i) => {
     slide.classList.remove("active");
@@ -9,11 +8,10 @@ function showSlide() {
   });
   index = (index + 1) % slides.length;
 }
-setInterval(showSlide, 10000);
+setInterval(showSlide, 8000);
 
 // Mini sliders in sections
 let miniSliders = document.querySelectorAll(".mini-slider");
-
 miniSliders.forEach(slider => {
   let miniSlides = slider.querySelectorAll(".mini-slide");
   let idx = 0;

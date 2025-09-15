@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jesus Is Lord</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Mapbox -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Banner Image -->
+    <div class="banner">
+      <img src="https://via.placeholder.com/1100x150/00008b/ffffff?text=Jesus+Is+Lord+Ministry" alt="Banner">
+    </div>
+
+    <!-- Extra Image Before Menu -->
+    <div class="before-menu">
+      <img src="https://via.placeholder.com/1080x100/00008b/ffffff?text=Welcome+To+The+House+Of+The+LORD" alt="Before Menu">
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">JesusIsLord</a>
+      <a href="#">Prophecies</a>
+      <a href="#">Teachings</a>
+      <a href="#">Photo Gallery</a>
+      <a href="#">Salvation Prayer</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <!-- Main Slider -->
+    <div class="slider">
+      <div class="slide active">
+        <img src="https://via.placeholder.com/1200x300/00008b/ffffff?text=Slide+1" alt="Slide 1">
+      </div>
+      <div class="slide">
+        <img src="https://via.placeholder.com/1200x300/001177/ffffff?text=Slide+2" alt="Slide 2">
+      </div>
+      <div class="slide">
+        <img src="https://via.placeholder.com/1200x300/001155/ffffff?text=Slide+3" alt="Slide 3">
+      </div>
+    </div>
+
+    <!-- Running Text -->
+    <div class="marquee">
+      <span>Isaiah 40:3 - A voice of one calling: “In the wilderness prepare the way for the Lord; make straight in the desert a highway for our God.”</span>
+    </div>
+    <h2 class="page-title">Contact Us</h2>
+    <p class="intro-text">We’d love to hear from you. Please fill out the form below or visit us at the location shown on the map.</p>
+    
+    <!-- Contact Form -->
+       
+    <form class="contact-form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <!-- Map -->
+    <div id="map"></div>
+  </div>
+
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2l0aGVrbyIsImEiOiJjbTQydWNkencwNHhiMmpzNGl6cXZ6M2YwIn0.yn5MQqqN4uWGzPguN3j9hw';
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(successLocation, errorLocation, { enableHighAccuracy: true });
+    } else {
+      errorLocation();
+    }
+
+    function successLocation(position) {
+      setupMap([position.coords.longitude, position.coords.latitude]);
+    }
+
+    function errorLocation() {
+      // Default: Nairobi, Kenya
+      setupMap([36.8219, -1.2921]);
+    }
+
+    function setupMap(center) {
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: center,
+        zoom: 13
+      });
+
+      new mapboxgl.Marker({ color: "red" })
+        .setLngLat(center)
+        .addTo(map);
+    }
+  </script>
+</body>
+</html>
