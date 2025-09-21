@@ -25,12 +25,33 @@ body {
 
 
 /* Banner */
-.banner img,
-.before-menu img {
+   .banner iframe,
+.before-menu iframe {
   width: 100%;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  border-radius: 0;
+  display: block;
+  margin: 0;
+  margin-bottom: -50px; /* reduces the distance, pulls them closer */
 }
+.before-menu {
+  margin-bottom: -30px; /* reduces the distance, pulls them closer */
+}
+
+.banner-wrapper {
+  max-width: 1000px;
+  height: 400px;        /* adjust size */
+  overflow: hidden;     /* no scrollbars */
+  display: flex;
+  margin-bottom: -130px;    /* centers it */
+}
+
+.banner-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
 
 /* Navigation */
 nav {
@@ -56,52 +77,51 @@ nav a:hover {
   transform: scale(1.1);
 }
 
-/* Main Slider */
-.slider {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-}
-.slide.active { opacity: 1; }
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
 /* Running scripture text */
-.marquee {
-  background: #00008b;
-  color:  #FFFF00;
-  font-weight: bold;
-  font-style: italic;
-  padding: 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  box-sizing: border-box;
+.marquee { 
+  background: #00008b; 
+  color: #FFFF00; 
+  font-weight: bold; 
+  font-style: italic; 
+  padding: 10px; 
+  overflow: hidden; 
+  white-space: nowrap; 
+  box-sizing: border-box; 
+  margin: 20px 0; 
+} 
+.marquee span { 
+  display: inline-block; 
+  padding-left: 100%; 
+  animation: marquee 15s linear infinite; 
+} 
+@keyframes marquee { 
+  0% { transform: translateX(0%); } 100% { transform: translateX(-100%); } }
+
+
+
+
+
+  .two-side {
+  display: flex;
+  flex-wrap: wrap;        /* stack on mobile */
+  gap: 8px;              /* space between iframes */
   margin: 20px 0;
 }
 
-.marquee span {
-  display: inline-block;
-  padding-left: 100%;
-  animation: marquee 15s linear infinite;
+.side {
+  flex: 1;
+  min-width: 300px;       /* responsive break point */
 }
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
+
+.side iframe {
+  width: 100%;
+  height: 300px;          /* adjust height as needed */
+  border: none;
+  display: block;
 }
+
+
 
 /* Sections layout */
 .sections {
